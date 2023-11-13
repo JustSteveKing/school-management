@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\Identity\Role;
 use Carbon\CarbonInterface;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
@@ -19,6 +20,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @property string $id
  * @property string $first_name
  * @property string $last_name
+ * @property Role $role
  * @property string $email
  * @property string $password
  * @property null|string $remember_token
@@ -42,6 +44,7 @@ final class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'first_name',
         'last_name',
+        'role',
         'email',
         'password',
         'remember_token',
@@ -62,5 +65,6 @@ final class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'role' => Role::class,
     ];
 }
