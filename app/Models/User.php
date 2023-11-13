@@ -17,7 +17,8 @@ use Laravel\Sanctum\PersonalAccessToken;
 
 /**
  * @property string $id
- * @property string $name
+ * @property string $first_name
+ * @property string $last_name
  * @property string $email
  * @property string $password
  * @property null|string $remember_token
@@ -39,7 +40,8 @@ final class User extends Authenticatable implements MustVerifyEmail
      * @var array<int,string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
         'remember_token',
